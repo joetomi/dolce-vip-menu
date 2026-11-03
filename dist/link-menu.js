@@ -1,6 +1,6 @@
 const menuCards = [
-  { id: 'regular', title: 'منيو المشروبات', action: 'عرض المنيو', illustration: 'drinks-wordmark-ar.svg' },
-  { id: 'dessert', title: 'منيو الحلويات', action: 'عرض المنيو', illustration: 'desserts-wordmark-ar.svg' }
+  { id: 'regular', title: 'منيو المشروبات', action: 'عرض منيو المشروبات', illustration: 'drinks-wordmark-clear.webp' },
+  { id: 'dessert', title: 'منيو الحلويات', action: 'عرض منيو الحلو', illustration: 'desserts-wordmark-clear.webp' }
 ];
 
 const panels = {
@@ -18,7 +18,7 @@ function makeCard(item) {
   button.setAttribute('aria-expanded', 'false');
   button.setAttribute('aria-controls', `${item.id}-panel`);
   button.innerHTML = `<span class="menu-card__main"><img class="menu-card__illustration" alt="" width="220" height="120"></span><span class="menu-card__action"><svg class="menu-card__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span class="menu-card__action-label"></span></span>`;
-  button.querySelector('.menu-card__illustration').src = `assets/link-menu/${item.illustration}?v=3`;
+  button.querySelector('.menu-card__illustration').src = `assets/link-menu/${item.illustration}?v=4`;
   button.querySelector('.menu-card__action-label').textContent = item.action;
   button.addEventListener('click', () => openMenu(item.id));
   return button;
