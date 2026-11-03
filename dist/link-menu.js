@@ -1,6 +1,6 @@
 const menuCards = [
-  { id: 'regular', title: 'منيو المشروبات', action: 'عرض المنيو', illustration: 'drinks-wordmark-clear.webp' },
-  { id: 'dessert', title: 'منيو الحلويات', action: 'عرض المنيو', illustration: 'desserts-wordmark-clear.webp' }
+  { id: 'regular', title: 'منيو المشروبات', action: 'عرض المنيو', illustration: 'drinks-wordmark-ar.svg' },
+  { id: 'dessert', title: 'منيو الحلويات', action: 'عرض المنيو', illustration: 'desserts-wordmark-ar.svg' }
 ];
 
 const panels = {
