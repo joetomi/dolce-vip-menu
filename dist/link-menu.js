@@ -27,14 +27,49 @@ function makeCard(item) {
 for (const item of menuCards) cardGrid.append(makeCard(item));
 const buttons = [...cardGrid.querySelectorAll('.menu-card')];
 
-function openMenu(key) {
-  const shouldOpen = panels[key].hidden;
-  for (const [name, panel] of Object.entries(panels)) panel.hidden = name !== key || !shouldOpen;
-  for (const button of buttons) button.setAttribute('aria-expanded', String(button.dataset.menu === key && shouldOpen));
-  history.replaceState(null, '', shouldOpen ? `#${key}` : location.pathname + location.search);
+let activeMenu = null;
+let transitionId = 0;
+let currentAnimation = null;
+
+async function animatePanel(panel, opening, id) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    panel.hidden = !opening;
+    return;
+  }
+  if (opening) panel.hidden = false;
+  const height = panel.scrollHeight;
+  panel.style.overflow = 'hidden';
+  const frames = opening
+    ? [{ height: '0px', opacity: 0, transform: 'translateY(-12px)' }, { height: `${height}px`, opacity: 1, transform: 'translateY(0)' }]
+    : [{ height: `${height}px`, opacity: 1, transform: 'translateY(0)' }, { height: '0px', opacity: 0, transform: 'translateY(-12px)' }];
+  currentAnimation = panel.animate(frames, { duration: 360, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+  try { await currentAnimation.finished; } catch { return; }
+  if (id !== transitionId) return;
+  if (!opening) panel.hidden = true;
+  panel.style.overflow = '';
+  currentAnimation = null;
 }
 
-if (location.hash === '#regular' || location.hash === '#dessert') openMenu(location.hash.slice(1));
+async function openMenu(key, immediate = false) {
+  const id = ++transitionId;
+  currentAnimation?.cancel();
+  currentAnimation = null;
+  for (const panel of Object.values(panels)) panel.style.overflow = '';
+  const next = activeMenu === key ? null : key;
+  for (const button of buttons) button.setAttribute('aria-expanded', String(button.dataset.menu === next));
+  history.replaceState(null, '', next ? `#${next}` : location.pathname + location.search);
+  if (immediate) {
+    for (const [name, panel] of Object.entries(panels)) panel.hidden = name !== next;
+    activeMenu = next;
+    return;
+  }
+  if (activeMenu) await animatePanel(panels[activeMenu], false, id);
+  if (id !== transitionId) return;
+  activeMenu = next;
+  if (next) await animatePanel(panels[next], true, id);
+}
+
+if (location.hash === '#regular' || location.hash === '#dessert') openMenu(location.hash.slice(1), true);
 for (const image of document.querySelectorAll('.menu-panel img')) {
   image.loading = 'eager';
   if (image.decode) image.decode().catch(() => {});
