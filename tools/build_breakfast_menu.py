@@ -53,6 +53,15 @@ def rule(left, right, top, color=OLIVE):
     c.setLineWidth(.55)
     c.line(left, HEIGHT-top, right, HEIGHT-top)
 
+def price_leader(name, top):
+    shaped_name = get_display(arabic_reshaper.reshape(name))
+    right = 492 - pdfmetrics.stringWidth(shaped_name, 'MenuArabic', 23) - 12
+    c.setFillColor(HexColor(OLIVE))
+    x = 100
+    while x <= right:
+        c.circle(x, HEIGHT-top+4, .65, stroke=0, fill=1)
+        x += 4.5
+
 text('Breakfast', 42, 115, 76, 'MenuScript', 'left')
 rule(333, 494, 103)
 text('التوست', 492, 185, 24, color=OLIVE)
@@ -63,11 +72,12 @@ toast = [
     ('بيتزا التوست أجبان', 'صلصة طماطم - زيتون - جبن', 35),
     ('بيتزا التوست خضراوات', 'جبنة - صلصة طماطم - تشكيلة خضروات', 33),
     ('بيتزا التوست دجاج', 'صلصة طماطم - دجاج - جبنة', 36),
-    ('هلتي توست', 'جبنة كريمي - صوص أفوكادو - أفوكادو - طماطم - خيار - زيتون', 40),
-    ('بيتزا التوست تونريو', 'صلصة طماطم - تونة - زيتون - جبن', 35),
+    ('هيلثي توست', 'جبنة كريمي - صوص أفوكادو - أفوكادو - طماطم - خيار - زيتون', 40),
+    ('بيتزا التوست تونة ريو', 'صلصة طماطم - تونة - زيتون - جبن', 35),
 ]
 for index, (name, ingredients, price) in enumerate(toast):
     top = 236 + index * 66
+    price_leader(name, top)
     text(name, 492, top, 23)
     text(str(price), 48, top, 24, 'MenuSerif', 'left')
     text('د.ل', 86, top, 12)
@@ -84,6 +94,7 @@ sandwiches = [
 ]
 for index, (name, price) in enumerate(sandwiches):
     top = 645 + index * 46
+    price_leader(name, top)
     text(name, 492, top, 23)
     text(str(price), 48, top, 24, 'MenuSerif', 'left')
     text('د.ل', 86, top, 12)
