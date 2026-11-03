@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180" role="img" aria-label="كرواسون وعلبة شوكولاتة">
+  <rect width="360" height="180" fill="#fff"/>
+  <g fill="none" stroke="#4f3e21" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 128c15-7 27-34 37-56 8 17 25 31 41 31s33-14 41-31c10 22 22 49 37 56-16 21-43 33-78 33s-62-12-78-33Z"/>
+    <path d="M77 72c-7 22-8 52-3 75M159 72c7 22 8 52 3 75"/>
+    <path d="M91 99c-5 18-7 42-3 55M145 99c5 18 7 42 3 55"/>
+    <path d="M224 71h93v83h-93V71Z"/>
+    <path d="M217 62h107v10H217V62Z"/>
+    <path d="M237 62V47h67v15"/>
+    <path d="M238 91h65v44h-65V91Z"/>
+    <path d="M238 113h65M259 91v44M281 91v44"/>
+    <path d="M220 156h101"/>
+  </g>
+</svg>

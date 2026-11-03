@@ -1,0 +1,3 @@
+PASS: start, registered Cloudflare connection, stop, restart, new URL, registered connection, cleanup. Public HTTP verification is separate.
+First: https://pulled-installation-tokyo-which.trycloudflare.com
+Second: https://harvard-equivalent-tradition-hide.trycloudflare.com

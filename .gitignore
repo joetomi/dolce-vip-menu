@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+node_modules/
+__pycache__/
+*.log
+contact.jpg
+menus.jpg
+logo-preview.png
+.models/
+cutout-review.jpg

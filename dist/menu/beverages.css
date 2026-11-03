@@ -1,0 +1,63 @@
+/* Dolce drinks: a separate collection with original photos framed by circular CSS crops. */
+.beverage-menu{--drink-ink:#35432d;--drink-muted:#778066;--drink-rule:#bdc3a9;position:relative;direction:rtl;margin:65px 12px 0;padding:34px 22px 40px;background:transparent;color:var(--drink-ink);border-top:1px solid var(--drink-rule);border-bottom:1px solid var(--drink-rule);scroll-margin-top:110px}
+.beverage-masthead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:8px;align-items:center;min-height:240px;padding-bottom:30px}
+.beverage-intro{position:relative;z-index:1;min-width:0}
+.beverage-kicker{display:block;direction:ltr;text-align:right;font:400 12px/1.5 var(--en);letter-spacing:.19em;color:var(--drink-muted);margin-bottom:16px}
+.beverage-intro h2{font:400 clamp(30px,9vw,43px)/1.25 var(--ar);margin:0 0 9px}
+.beverage-subtitle{display:block;direction:ltr;text-align:right;font:400 10px/1.6 var(--en);letter-spacing:.12em;color:var(--drink-muted)}
+.beverage-intro-rule{display:block;width:48px;height:1px;background:#8e9877;margin-top:22px}
+.beverage-photo-composition{position:relative;direction:ltr;width:100%;max-width:240px;height:220px;justify-self:center}
+.drink-portrait{margin:0;aspect-ratio:1;border-radius:50%;overflow:hidden;background:#d1d1b9;box-shadow:0 9px 20px #3d45251a;flex:none}
+.drink-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 76%;border-radius:50%}
+.portrait-main{position:absolute;top:9%;left:0;width:96%;outline:1px solid #aab195;outline-offset:5px}
+.portrait-small{position:absolute;bottom:0;right:-2%;width:57%;border:5px solid #f4eddd;box-shadow:0 7px 16px #3d452526}
+.beverage-selector{display:flex;gap:7px 19px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--drink-rule);border-bottom:1px solid var(--drink-rule);padding:14px 0;margin-bottom:32px}
+.beverage-selector button{position:relative;max-width:100%;padding:5px 0;border:0;border-bottom:1px solid transparent;background:none;color:#7a826d;font:400 16px/1.5 var(--ar);cursor:pointer;text-align:right}
+.beverage-selector button[aria-pressed="true"]{color:#34442a;border-bottom-color:#6f7d59}
+.beverage-selector button[aria-pressed="true"]::before{content:'';display:inline-block;width:4px;height:4px;margin:0 0 3px 6px;background:#6f7d59;transform:rotate(45deg)}
+.beverage-selector button:focus-visible{outline:1px solid #74845c;outline-offset:4px}
+.beverage-chapters{min-height:560px}
+.drink-category{scroll-margin-top:110px}
+.beverage-menu [hidden]{display:none!important}
+.drink-category-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px;padding-bottom:18px;border-bottom:1px solid #d6dac8}
+.drink-category-heading h3{font:400 29px/1.35 var(--ar);margin:7px 0 0}
+.drink-category-en{display:block;direction:ltr;text-align:right;font:400 12px/1.5 var(--en);letter-spacing:.13em;color:var(--drink-muted)}
+.drink-category-number{direction:ltr;font:400 48px/1 var(--en);color:#aeb69a;align-self:flex-end}
+.drink-list{list-style:none;margin:0;padding:0}
+.drink-list>li{padding:0;margin:0}
+.drink-item{padding:21px 0 23px;min-width:0;scroll-margin-top:110px;border-bottom:1px solid #e3e5d8;overflow-wrap:break-word}
+.drink-copy{min-width:0}
+.drink-item h4{font:400 22px/1.35 var(--ar);margin:0 0 4px;color:#35432d}
+.drink-english{display:block;direction:ltr;text-align:right;font:400 16px/1.4 var(--en);letter-spacing:.015em;color:#80866f}
+.drink-item p{margin:9px 0 0;font:400 15.5px/1.8 var(--ar);color:#717762;text-wrap:pretty}
+.drink-note{display:block;margin-bottom:8px;font:400 13px/1.4 var(--ar);color:#7b885f}
+.drink-item.has-portrait{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:17px;align-items:center}
+.drink-item .drink-portrait{width:92px;border:3px solid #f4eddd;outline:1px solid #bdc3a9}
+.drink-item:focus,.drink-category:focus{outline:none}
+.drink-category-end{display:flex;align-items:center;justify-content:center;gap:12px;font:400 15px/1.5 var(--ar);color:#8b927a;margin:34px 0 0}
+.drink-category-end span[lang]{font:400 11px/1.5 var(--en);letter-spacing:.16em}
+@media(min-width:700px){
+ .beverage-menu{margin:80px 24px 0;padding:42px 48px 48px}
+ .beverage-masthead{min-height:330px;gap:45px;padding-bottom:38px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .beverage-intro h2{font-size:66px;margin-bottom:12px}
+ .beverage-kicker{font-size:15px;margin-bottom:24px;letter-spacing:.23em}
+ .beverage-subtitle{font-size:14px;letter-spacing:.18em}
+ .beverage-intro-rule{width:75px;margin-top:30px}
+ .beverage-photo-composition{max-width:300px;height:310px}
+ .portrait-main{top:2%;width:91%}
+ .portrait-small{width:53%;right:-3%;bottom:0;border-width:7px}
+ .beverage-selector{gap:10px 25px;padding:20px 0;margin-bottom:38px}
+ .beverage-selector button{font-size:18px}
+ .drink-category-heading{padding-bottom:23px;margin-bottom:8px}
+ .drink-category-heading h3{font-size:36px}
+ .drink-category-en{font-size:14px}
+ .drink-category-number{font-size:66px}
+ .drink-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px;align-items:start}
+ .drink-item{padding:26px 0 28px}
+ .drink-item h4{font-size:24px}
+ .drink-english{font-size:18px}
+ .drink-item p{font-size:17px}
+ .drink-item.has-portrait{grid-template-columns:minmax(0,1fr) 96px;gap:18px}
+ .drink-item .drink-portrait{width:96px}
+}
+@media(max-width:359px){.beverage-menu{padding-left:18px;padding-right:18px}.beverage-masthead{min-height:225px}.beverage-photo-composition{height:195px}.beverage-kicker{font-size:10px}.beverage-subtitle{font-size:9px}.beverage-selector{column-gap:15px}.beverage-selector button{font-size:15px}.drink-item.has-portrait{grid-template-columns:minmax(0,1fr) 78px;gap:13px}.drink-item .drink-portrait{width:78px}.drink-category-heading h3{font-size:26px}}

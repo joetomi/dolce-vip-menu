@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#485638" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+<symbol id="meals" viewBox="0 0 32 32"><ellipse cx="16" cy="18" rx="8" ry="7"/><ellipse cx="16" cy="18" rx="5" ry="4"/><path d="M3 8v8m3-8v8m-3-4h3M4.5 16v11M28 8c-3 3-3 7 0 9v10M28 8v9"/></symbol>
+<symbol id="pasta" viewBox="0 0 32 32"><path d="M4 17h24c-1 8-5 11-12 11S5 25 4 17Z"/><path d="M8 13c-4-5 4-5 0-10m7 10c-4-5 4-5 0-10m7 10c-4-5 4-5 0-10M3 17c7-3 19-3 26 0M10 28h12"/></symbol>
+<symbol id="salad" viewBox="0 0 32 32"><path d="M4 18h24c-2 7-5 10-12 10S6 25 4 18Zm12-1c-7-2-9-7-8-12 6 1 10 5 8 12Zm1 0c-1-6 3-10 9-11 1 5-2 10-9 11ZM9 8l8 10m7-9-7 9M9 28h14"/></symbol>
+<symbol id="dessert" viewBox="0 0 32 32"><path d="m5 13 20-5 3 18H5V13Zm0 0 23 4M5 20l23 2M25 8c-4-3-8-4-12-3L5 13"/><path d="M17 8c-3-1-2-5 0-5s3 4 0 5Zm1-5 3-2"/></symbol>
+<symbol id="drinks" viewBox="0 0 32 32"><path d="M8 11h17l-2 17H10L8 11Zm10 0 4-8h6M9 17h15M11 22c3-2 7 2 12 0"/><path d="M10 10A5 5 0 1 0 7 14M4 5l6 6M3 10h6"/></symbol>
+</svg>
