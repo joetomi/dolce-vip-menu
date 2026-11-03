@@ -39,6 +39,7 @@ h1 { margin: 0 0 6px; font-size: 22px; line-height: 1.55; font-weight: 600; lett
 .menu-card__main::after { content: ''; position: absolute; bottom: 9px; left: 50%; width: 35px; height: 2px; transform: translateX(-50%); background: #927152; }
 .menu-card[data-menu="regular"] .menu-card__main::after { background: #899675; }
 .menu-card__illustration { display: block; width: 100%; height: 100%; object-fit: contain; }
+.menu-card[data-menu="regular"] .menu-card__illustration { width: 88%; height: 88%; }
 .menu-card__action { min-width: 0; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; padding-inline: 21px; background: var(--card); color: var(--ink); direction: ltr; }
 .menu-card__chevron { flex: none; width: 18px; height: 18px; display: block; transition: transform 180ms ease; }
 .menu-card__action-label { min-width: 0; direction: rtl; text-align: right; font-size: 15px; font-weight: 500; line-height: 1.25; white-space: nowrap; }
