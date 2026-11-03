@@ -1,11 +1,13 @@
 const menuCards = [
   { id: 'regular', title: 'منيو المشروبات', action: 'عرض منيو المشروبات', illustration: 'drinks-wordmark-clear.webp' },
-  { id: 'dessert', title: 'منيو الحلويات', action: 'عرض منيو الحلو', illustration: 'desserts-wordmark-clear.webp' }
+  { id: 'dessert', title: 'منيو الحلويات', action: 'عرض منيو الحلو', illustration: 'desserts-wordmark-clear.webp' },
+  { id: 'breakfast', title: 'منيو الإفطار', action: 'عرض منيو الإفطار', illustration: 'breakfast-wordmark.svg' }
 ];
 
 const panels = {
   regular: document.getElementById('regular-panel'),
-  dessert: document.getElementById('dessert-panel')
+  dessert: document.getElementById('dessert-panel'),
+  breakfast: document.getElementById('breakfast-panel')
 };
 const cardGrid = document.getElementById('menu-choices');
 
@@ -79,7 +81,7 @@ async function openMenu(key, immediate = false) {
   releaseScrollGuard();
 }
 
-if (location.hash === '#regular' || location.hash === '#dessert') openMenu(location.hash.slice(1), true);
+if (Object.hasOwn(panels, location.hash.slice(1))) openMenu(location.hash.slice(1), true);
 for (const image of document.querySelectorAll('.menu-panel img')) {
   image.loading = 'eager';
   if (image.decode) image.decode().catch(() => {});
