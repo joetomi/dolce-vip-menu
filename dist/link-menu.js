@@ -31,6 +31,41 @@ let activeMenu = null;
 let transitionId = 0;
 let currentAnimation = null;
 
+function measureHiddenPanel(panel, width) {
+  panel.hidden = false;
+  panel.style.position = 'absolute';
+  panel.style.visibility = 'hidden';
+  panel.style.width = `${width}px`;
+  const height = panel.offsetHeight;
+  panel.hidden = true;
+  panel.style.position = '';
+  panel.style.visibility = '';
+  panel.style.width = '';
+  return height;
+}
+
+async function settleScrollBeforeSwitch(next, id) {
+  if (!activeMenu) return;
+  const current = panels[activeMenu];
+  const incomingHeight = next ? measureHiddenPanel(panels[next], current.offsetWidth) : 0;
+  const projectedEnd = Math.max(0, document.documentElement.scrollHeight - current.offsetHeight + incomingHeight - innerHeight);
+  if (scrollY <= projectedEnd) return;
+  const target = Math.max(0, projectedEnd - 12);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    scrollTo(0, target);
+    return;
+  }
+  scrollTo({ top: target, behavior: 'smooth' });
+  await new Promise(resolve => {
+    const start = performance.now();
+    const check = () => {
+      if (id !== transitionId || Math.abs(scrollY - target) < 3 || performance.now() - start > 850) resolve();
+      else requestAnimationFrame(check);
+    };
+    requestAnimationFrame(check);
+  });
+}
+
 async function animatePanel(panel, opening, id) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     panel.hidden = !opening;
@@ -63,6 +98,8 @@ async function openMenu(key, immediate = false) {
     activeMenu = next;
     return;
   }
+  await settleScrollBeforeSwitch(next, id);
+  if (id !== transitionId) return;
   if (activeMenu) await animatePanel(panels[activeMenu], false, id);
   if (id !== transitionId) return;
   activeMenu = next;

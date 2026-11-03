@@ -49,7 +49,7 @@ h1 { margin: 0 0 6px; font-size: 22px; line-height: 1.55; font-weight: 600; lett
 .menu-card[aria-expanded="true"] .menu-card__chevron { transform: rotate(180deg); }
 .menu-card:focus-visible, .socials a:focus-visible { outline: 2px solid #705b3e; outline-offset: 3px; }
 
-.menu-panel { margin-top: 18px; padding: 9px; border-radius: 16px; background: var(--card); box-shadow: 0 7px 22px #715b3b1c; }
+.menu-panel { margin-top: 18px; padding: 9px; border-radius: 16px; background: var(--card); box-shadow: 0 7px 22px #715b3b1c; overflow-anchor: none; }
 .menu-panel[hidden] { display: none; }
 .menu-panel figure { margin: 0; }
 .menu-panel figure + figure { margin-top: 9px; }
