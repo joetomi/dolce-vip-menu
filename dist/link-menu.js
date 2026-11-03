@@ -49,25 +49,20 @@ async function settleScrollBeforeSwitch(next, id) {
   const current = panels[activeMenu];
   const incomingHeight = next ? measureHiddenPanel(panels[next], current.offsetWidth) : 0;
   const projectedEnd = Math.max(0, document.documentElement.scrollHeight - current.offsetHeight + incomingHeight - innerHeight);
-  if (scrollY <= projectedEnd - 80) return;
-  const target = Math.max(0, projectedEnd - 80);
+  if (scrollY <= projectedEnd) return;
+  const target = Math.max(0, projectedEnd - 12);
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     scrollTo(0, target);
     return;
   }
+  scrollTo({ top: target, behavior: 'smooth' });
   await new Promise(resolve => {
     const start = performance.now();
-    const from = scrollY;
-    const duration = 1000;
-    const step = now => {
-      if (id !== transitionId) return resolve();
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = progress < .5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
-      scrollTo(0, from + (target - from) * eased);
-      if (progress < 1) requestAnimationFrame(step);
-      else resolve();
+    const check = () => {
+      if (id !== transitionId || Math.abs(scrollY - target) < 3 || performance.now() - start > 850) resolve();
+      else requestAnimationFrame(check);
     };
-    requestAnimationFrame(step);
+    requestAnimationFrame(check);
   });
 }
 
@@ -82,7 +77,7 @@ async function animatePanel(panel, opening, id) {
   const frames = opening
     ? [{ height: '0px', opacity: 0, transform: 'translateY(-12px)' }, { height: `${height}px`, opacity: 1, transform: 'translateY(0)' }]
     : [{ height: `${height}px`, opacity: 1, transform: 'translateY(0)' }, { height: '0px', opacity: 0, transform: 'translateY(-12px)' }];
-  currentAnimation = panel.animate(frames, { duration: 520, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+  currentAnimation = panel.animate(frames, { duration: 360, easing: 'cubic-bezier(.22, 1, .36, 1)' });
   try { await currentAnimation.finished; } catch { return; }
   if (id !== transitionId) return;
   if (!opening) panel.hidden = true;
