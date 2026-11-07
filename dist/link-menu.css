@@ -37,7 +37,7 @@ h1 { margin: 0 0 6px; font-size: 22px; line-height: 1.55; font-weight: 600; lett
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 .menu-card__main { position: relative; min-width: 0; display: grid; place-items: center; background: #fff; }
-.menu-card[data-menu="mains"] { grid-column: 1 / -1; }
+.menu-card[data-menu="mains"] .menu-card__action-label { white-space: normal; }
 .menu-card[data-menu="mains"] .menu-card__illustration { max-width: 300px; }
 .menu-card__main::after { content: ''; position: absolute; bottom: 9px; left: 50%; width: 35px; height: 2px; transform: translateX(-50%); background: #927152; }
 .menu-card[data-menu="regular"] .menu-card__main::after { background: #899675; }
@@ -65,7 +65,9 @@ h1 { margin: 0 0 6px; font-size: 22px; line-height: 1.55; font-weight: 600; lett
   .menu-panel { padding: 5px; }
 }
 @media (max-width: 380px) {
-  .menu-choices { width: min(100%, 267px); grid-template-columns: minmax(0, 1fr); }
+  .menu-choices { gap: 10px; }
+  .menu-card__action { padding-inline: 10px; gap: 6px; }
+  .menu-card__action-label { font-size: 13px; white-space: normal; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

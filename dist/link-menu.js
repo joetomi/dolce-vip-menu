@@ -1,11 +1,13 @@
 const menuCards = [
   { id: 'mains', title: 'الأطباق الرئيسية', action: 'عرض منيو الأطباق الرئيسية', illustration: 'mains-wordmark.svg' },
+  { id: 'breakfast', title: 'منيو الإفطار', action: 'عرض منيو الإفطار', illustration: 'breakfast-wordmark.svg' },
   { id: 'regular', title: 'منيو المشروبات', action: 'عرض منيو المشروبات', illustration: 'drinks-wordmark-clear.webp' },
   { id: 'dessert', title: 'منيو الحلويات', action: 'عرض منيو الحلو', illustration: 'desserts-wordmark-clear.webp' }
 ];
 
 const panels = {
   mains: document.getElementById('mains-panel'),
+  breakfast: document.getElementById('breakfast-panel'),
   regular: document.getElementById('regular-panel'),
   dessert: document.getElementById('dessert-panel')
 };
