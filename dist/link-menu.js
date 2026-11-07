@@ -1,9 +1,11 @@
 const menuCards = [
+  { id: 'mains', title: 'الأطباق الرئيسية', action: 'عرض منيو الأطباق الرئيسية', illustration: 'mains-wordmark.svg' },
   { id: 'regular', title: 'منيو المشروبات', action: 'عرض منيو المشروبات', illustration: 'drinks-wordmark-clear.webp' },
   { id: 'dessert', title: 'منيو الحلويات', action: 'عرض منيو الحلو', illustration: 'desserts-wordmark-clear.webp' }
 ];
 
 const panels = {
+  mains: document.getElementById('mains-panel'),
   regular: document.getElementById('regular-panel'),
   dessert: document.getElementById('dessert-panel')
 };
@@ -76,10 +78,15 @@ async function openMenu(key, immediate = false) {
   if (id !== transitionId) return;
   activeMenu = next;
   if (next) await animatePanel(panels[next], true, id);
+  if (id !== transitionId) return;
+  if (next) {
+    const top = Math.max(0, scrollY + panels[next].getBoundingClientRect().top - 12);
+    window.scrollTo({ top, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  }
   releaseScrollGuard();
 }
 
-if (location.hash === '#regular' || location.hash === '#dessert') openMenu(location.hash.slice(1), true);
+if (Object.hasOwn(panels, location.hash.slice(1))) openMenu(location.hash.slice(1), true);
 for (const image of document.querySelectorAll('.menu-panel img')) {
   image.loading = 'eager';
   if (image.decode) image.decode().catch(() => {});
