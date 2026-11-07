@@ -55,7 +55,7 @@ h1 { margin: 0 0 6px; font-size: 22px; line-height: 1.55; font-weight: 600; lett
 .menu-panel { margin-top: 18px; padding: 9px; border-radius: 16px; background: var(--card); box-shadow: 0 7px 22px #715b3b1c; overflow-anchor: none; }
 .menu-panel[hidden] { display: none; }
 .menu-panel figure { margin: 0; }
-.menu-panel figure + figure { margin-top: 9px; }
+.menu-panel figure + figure { margin-top: 0; }
 .menu-panel img { display: block; width: 100%; height: auto; background: #fcfbf3; }
 
 @media (max-width: 572px) {
@@ -63,7 +63,6 @@ h1 { margin: 0 0 6px; font-size: 22px; line-height: 1.55; font-weight: 600; lett
   .profile { min-height: 100dvh; border-radius: 0; box-shadow: none; padding: 24px 16px 32px; }
   .avatar { width: 128px; height: 128px; margin-top: 4px; }
   .menu-panel { padding: 5px; }
-  .menu-panel figure + figure { margin-top: 5px; }
 }
 @media (max-width: 380px) {
   .menu-choices { width: min(100%, 267px); grid-template-columns: minmax(0, 1fr); }
