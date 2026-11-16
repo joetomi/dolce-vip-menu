@@ -1,6 +1,0 @@
-{
-  "name": "Dolce Sky Menu",
-  "description": "في مكانٍ أعلى من المعتاد ، تبدأ تجربة مختلفة تمامًا✨",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
