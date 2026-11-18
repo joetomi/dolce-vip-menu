@@ -129,7 +129,7 @@ export default async function handler(req, res) {
     const cleanPhone = String(phone || '').trim().slice(0, 30);
 
     const tableDisplay = cleanTable ? escapeHtml(cleanTable) : 'غير محدد';
-    const customerNameDisplay = cleanName ? escapeHtml(cleanName) : 'زبون (فاعل خير)';
+    const customerNameDisplay = cleanName ? escapeHtml(cleanName) : 'زبون مجهول';
     const phoneDisplay = cleanPhone ? escapeHtml(cleanPhone) : 'غير مدخل';
     const commentDisplay = cleanComment
       ? `"${escapeHtml(cleanComment)}"`
