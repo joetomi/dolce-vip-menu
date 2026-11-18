@@ -107,6 +107,7 @@ export default async function handler(req, res) {
       cleanliness,
       tableNumber,
       name,
+      phone,
       comment
     } = body;
 
@@ -125,9 +126,11 @@ export default async function handler(req, res) {
     const cleanCleanliness = String(cleanliness || 'غير محدد').trim().slice(0, 30);
     const cleanTable = String(tableNumber || '').trim().slice(0, 20);
     const cleanName = String(name || '').trim().slice(0, 60);
+    const cleanPhone = String(phone || '').trim().slice(0, 30);
 
     const tableDisplay = cleanTable ? escapeHtml(cleanTable) : 'غير محدد';
     const customerNameDisplay = cleanName ? escapeHtml(cleanName) : 'زبون (فاعل خير)';
+    const phoneDisplay = cleanPhone ? escapeHtml(cleanPhone) : 'غير مدخل';
     const commentDisplay = cleanComment
       ? `"${escapeHtml(cleanComment)}"`
       : '<i>لا توجد ملاحظات إضافية</i>';
@@ -140,6 +143,7 @@ export default async function handler(req, res) {
       `━━━━━━━━━━━━━━━━━━`,
       `<b>رقم الطاولة:</b> ${tableDisplay}`,
       `<b>اسم الزبون:</b> ${customerNameDisplay}`,
+      `<b>رقم الهاتف:</b> <code>${phoneDisplay}</code>`,
       ``,
       `<b>معايير التقييم:</b>`,
       `• <b>سرعة الخدمة:</b> ${escapeHtml(cleanSpeed)}`,

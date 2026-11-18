@@ -1,4 +1,4 @@
-const CACHE = 'dolce-link-menu-v36';
+const CACHE = 'dolce-link-menu-v37';
 
 self.addEventListener('install', event => {
   self.skipWaiting();

@@ -175,6 +175,7 @@
 
       const tableInput = document.getElementById('tableNumber');
       const nameInput = document.getElementById('customerName');
+      const phoneInput = document.getElementById('customerPhone');
 
       const payload = {
         serviceSpeed: getVal('serviceSpeed'),
@@ -183,6 +184,7 @@
         cleanliness: getVal('cleanliness'),
         tableNumber: tableInput ? tableInput.value.trim() : '',
         name: nameInput ? nameInput.value.trim() : '',
+        phone: phoneInput ? phoneInput.value.trim() : '',
         comment: comment
       };
 
