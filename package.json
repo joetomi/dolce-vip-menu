@@ -1,0 +1,19 @@
+{
+  "name": "dolce-vip-menu",
+  "version": "1.0.0",
+  "description": "Dolce Sky Menu and Customer Feedback System",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "restaurant",
+    "menu",
+    "telegram-bot",
+    "feedback"
+  ],
+  "author": "Dolce Sky",
+  "license": "ISC"
+}

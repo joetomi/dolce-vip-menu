@@ -1,5 +1,290 @@
 <!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#dac7a8"><meta name="description" content="في مكانٍ أعلى من المعتاد ، تبدأ تجربة مختلفة تمامًا✨"><meta property="og:type" content="website"><meta property="og:locale" content="ar_LY"><meta property="og:site_name" content="DOLCE sky"><meta property="og:title" content="DOLCE sky"><meta property="og:description" content="في مكانٍ أعلى من المعتاد ، تبدأ تجربة مختلفة تمامًا✨"><meta property="og:url" content="https://dolce-vip.com.ly/"><meta property="og:image" content="https://dolce-vip.com.ly/logo-preview.png"><meta property="og:image:secure_url" content="https://dolce-vip.com.ly/logo-preview.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="849"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="DOLCE sky"><meta name="twitter:description" content="في مكانٍ أعلى من المعتاد ، تبدأ تجربة مختلفة تمامًا✨"><meta name="twitter:image" content="https://dolce-vip.com.ly/logo-preview.png"><title>Dolce Sky | المنيو</title><link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2"><link rel="icon" type="image/x-icon" href="/favicon.ico?v=2"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-<link rel="preload" as="image" href="assets/link-menu/profile.webp"><link rel="preload" as="image" href="assets/link-menu/menu-2.jpeg"><link rel="preload" as="image" href="assets/link-menu/menu-3.jpeg"><link rel="preload" as="image" href="assets/link-menu/menu-1.jpeg"><link rel="preload" as="image" href="assets/link-menu/dessert-with-cakes.webp"><link rel="preload" as="image" href="assets/link-menu/breakfast-approved.webp"><link rel="stylesheet" href="link-menu.css?v=13"><script src="link-menu.js?v=15" defer></script></head><body>
+<link rel="preload" as="image" href="assets/link-menu/profile.webp"><link rel="preload" as="image" href="assets/link-menu/menu-2.jpeg"><link rel="preload" as="image" href="assets/link-menu/menu-3.jpeg"><link rel="preload" as="image" href="assets/link-menu/menu-1.jpeg"><link rel="preload" as="image" href="assets/link-menu/dessert-with-cakes.webp"><link rel="preload" as="image" href="assets/link-menu/breakfast-approved.webp"><link rel="stylesheet" href="link-menu.css?v=25"><script src="link-menu.js?v=15" defer></script><script src="feedback.js?v=25" defer></script>
+<style>
+/* تفعيل تصميم وانتقال الأسئلة المباشر المخصص لـ Dolce Sky */
+.feedback-card { margin-top: 36px; padding: 24px 20px; border-radius: 24px; background: var(--card, #f6f0e9); border: 1px solid var(--card-border, #c9bba985); box-shadow: var(--card-shadow, 0 3px 0 #5f493214, 0 12px 25px #5f493216); text-align: right; }
+.feedback-header { text-align: center; margin-bottom: 20px; }
+.feedback-badge { display: inline-block; padding: 5px 14px; border-radius: 20px; background: #ecd9bd; color: #5d4624; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; margin-bottom: 8px; }
+.feedback-title { margin: 0 0 6px; font-size: 20px; font-weight: 600; color: var(--ink, #4f3e21); }
+.feedback-desc { margin: 0 auto; max-width: 420px; font-size: 13.5px; line-height: 1.6; color: #635035cc; }
+
+/* شريط وخط التقدم الأنيق */
+.survey-progress-wrapper { margin-bottom: 24px; padding: 0 4px; }
+.survey-progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.survey-step-counter { font-size: 13.5px; font-weight: 600; color: #6d5b45; }
+.survey-back-btn { background: transparent; border: none; padding: 4px 8px; font-family: inherit; font-size: 13px; font-weight: 500; color: #5d4624; cursor: pointer; display: none; align-items: center; gap: 4px; border-radius: 8px; transition: background 0.15s ease; }
+.survey-back-btn:hover { background: #ece3d7; }
+
+/* حاوية خط التقدم مع نقاط المراحل */
+.survey-progress-bar { position: relative; height: 4px; background: #ded5c8; border-radius: 4px; margin: 12px 6px 20px; }
+.survey-progress-fill { position: absolute; right: 0; top: 0; height: 100%; width: 0%; background: #5d4624; border-radius: 4px; transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
+.survey-progress-dots { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); display: flex; justify-content: space-between; pointer-events: none; }
+.survey-dot { width: 14px; height: 14px; border-radius: 50%; background: #dfd6c9; border: 3px solid var(--card, #f6f0e9); transition: all 0.35s ease; position: relative; z-index: 2; box-sizing: border-box; }
+.survey-dot.active { background: #5d4624; border-color: #5d4624; box-shadow: 0 0 0 3px #5d462426; transform: scale(1.15); }
+.survey-dot.completed { background: #5d4624; border-color: #5d4624; }
+
+/* حاوية الأسئلة وحركات الانتقال السلسة */
+.survey-steps-container { position: relative; min-height: 220px; }
+.survey-step { opacity: 0; transform: translateY(14px); transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.survey-step.active { opacity: 1; transform: translateY(0); }
+.survey-step.fade-out-up { opacity: 0; transform: translateY(-14px); }
+.survey-step.fade-out-down { opacity: 0; transform: translateY(14px); }
+.survey-step.fade-in-from-down { opacity: 0; transform: translateY(14px); }
+.survey-step.fade-in-from-up { opacity: 0; transform: translateY(-14px); }
+
+.survey-question { font-size: 16.5px; font-weight: 600; color: var(--ink, #4f3e21); margin: 0 0 16px; line-height: 1.5; }
+
+/* خيارات الراديو العمودية بـ SVG مخصص وأكشن الاختيار */
+.survey-options { display: flex; flex-direction: column; gap: 10px; }
+.survey-option { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 14px; background: #ffffffcc; border: 1.5px solid #dcd1c2; cursor: pointer; transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease; user-select: none; position: relative; }
+.survey-option input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0; margin: 0; }
+.survey-option:hover { border-color: #8d7659; background: #ffffff; }
+.survey-option:active { transform: scale(0.985); }
+.survey-option.selected { border-color: #5d4624; background: #fffcf7; box-shadow: 0 4px 16px #5d46241a; }
+
+.custom-radio-svg { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; position: relative; flex-shrink: 0; }
+.custom-radio-svg svg { position: absolute; top: 0; left: 0; width: 22px; height: 22px; transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.custom-radio-svg .radio-svg-selected { opacity: 0; transform: scale(0.4); }
+.custom-radio-svg .radio-svg-unselected { opacity: 1; transform: scale(1); }
+.survey-option.selected .custom-radio-svg .radio-svg-selected { opacity: 1; transform: scale(1); animation: popCheck 0.24s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.survey-option.selected .custom-radio-svg .radio-svg-unselected { opacity: 0; transform: scale(0.4); }
+
+@keyframes popCheck {
+  0% { transform: scale(0.3); }
+  70% { transform: scale(1.22); }
+  100% { transform: scale(1); }
+}
+
+.option-text { font-size: 15px; font-weight: 500; color: var(--ink, #4f3e21); }
+
+/* الخطوة الأخيرة: الحقول والزر */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-size: 14px; font-weight: 500; color: var(--ink, #4f3e21); margin-bottom: 8px; }
+.form-label .optional { font-size: 12px; font-weight: 400; color: #8c7657; }
+.form-input, .form-textarea { width: 100%; padding: 11px 14px; border-radius: 12px; background: #ffffff; border: 1px solid #dcd1c2; color: var(--ink, #4f3e21); font-family: inherit; font-size: 14px; transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; }
+.form-input:focus, .form-textarea:focus { border-color: #8d7659; box-shadow: 0 0 0 3px #8d765926; }
+.form-textarea { resize: vertical; min-height: 80px; }
+.char-count { text-align: left; font-size: 12px; color: #8c7657; margin-top: 4px; direction: ltr; }
+.submit-btn { width: 100%; padding: 14px; border-radius: 14px; background: #5d4624; color: #ffffff; border: none; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 14px #5d462438; transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease; margin-top: 6px; }
+.submit-btn:hover:not(:disabled) { background: #4a371c; transform: translateY(-2px); box-shadow: 0 6px 18px #5d462448; }
+.submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+.submit-btn.is-loading::after { content: ''; width: 18px; height: 18px; border: 2px solid #ffffff40; border-top-color: #ffffff; border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.feedback-alert { padding: 12px 14px; border-radius: 12px; font-size: 13.5px; margin-top: 14px; line-height: 1.5; display: none; }
+.feedback-alert--error { background: #fdf0ee; border: 1px solid #f4c0ba; color: #96281b; }
+.feedback-success-card { text-align: center; padding: 30px 18px; display: none; }
+.feedback-success-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; background: #e8f5e9; color: #2e7d32; font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+.feedback-success-title { margin: 0 0 8px; font-size: 20px; font-weight: 600; color: #2e7d32; }
+.feedback-success-desc { margin: 0 auto 20px; max-width: 380px; font-size: 14px; line-height: 1.6; color: #4f3e21cc; }
+.secondary-btn { padding: 10px 20px; border-radius: 10px; background: #fdfcf9; border: 1px solid #dcd1c2; color: var(--ink, #4f3e21); font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+.secondary-btn:hover { background: #efe9de; border-color: #8d7659; }
+
+@media (max-width: 480px) {
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .feedback-card { padding: 20px 14px; }
+}
+</style>
+</head><body>
 <main class="profile"><header class="intro"><div class="avatar"><img src="assets/link-menu/profile.webp" alt="شعار DOLCE" width="150" height="150" fetchpriority="high"></div><h1 lang="en">DOLCE SKY</h1><p class="notice">حرصًا على راحتكم وخصوصية أجواء المكان، نود إعلامكم بأن يُمنع اصطحاب الأطفال دون عمر 12 سنة<br>كما نحيطكم علمًا بأن المطعم داخلي فقط ولا تتوفر طلبات خارجية</p><p class="welcome">شكرًا لتفهّمكم، ونسعد باستقبالكم في Dolce Sky</p><nav class="socials" aria-label="روابط المطعم"><a href="https://www.instagram.com/dolce.sky1" target="_blank" rel="noopener noreferrer" aria-label="إنستغرام Dolce Sky" title="إنستغرام"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.25"/><circle class="dot" cx="17.6" cy="6.5" r="1.15"/></svg></a><a href="https://maps.app.goo.gl/5bNKVtc45anf6CpR9" target="_blank" rel="noopener noreferrer" aria-label="موقع المطعم على الخريطة" title="الموقع على الخريطة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.4 7-12a7 7 0 1 0-14 0c0 5.6 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></a></nav></header>
 <section class="menus" aria-label="المنيوات"><div class="menu-choices" id="menu-choices"></div>
-<div class="menu-panel" id="breakfast-panel" hidden aria-label="منيو الإفطار"><figure><img src="assets/link-menu/breakfast-approved.webp" alt="منيو الإفطار: البروشكيتا والسندويشات الباردة والتوست" width="1500" height="3973" loading="eager" decoding="async"></figure></div><div class="menu-panel" id="mains-panel" hidden aria-label="منيو الأطباق الرئيسية"><figure><img src="assets/link-menu/mains-salads.jpeg?v=2" alt="السلطات" width="1165" height="1654" loading="eager" decoding="async"></figure><figure><img src="assets/link-menu/mains-courses.jpeg?v=2" alt="الأطباق الرئيسية" width="1165" height="1654" loading="eager" decoding="async"></figure><figure><img src="assets/link-menu/mains-pasta.jpeg?v=2" alt="الباستا" width="1165" height="1654" loading="eager" decoding="async"></figure></div><div class="menu-panel" id="regular-panel" hidden aria-label="صور المنيو"><figure><img src="assets/link-menu/menu-2.jpeg" alt="المنيو: المشروبات الساخنة" width="1131" height="1600" loading="eager" decoding="async"></figure><figure><img src="assets/link-menu/menu-3.jpeg" alt="المنيو: مشروبات الماتشا والشاي والكوكتيلات" width="1131" height="1600" loading="eager" decoding="async"></figure><figure><img src="assets/link-menu/menu-1.jpeg" alt="المنيو: الموهيتو والمشروبات الباردة" width="1131" height="1600" loading="eager" decoding="async"></figure></div><div class="menu-panel" id="dessert-panel" hidden aria-label="صورة منيو الحلويات"><figure><img src="assets/link-menu/dessert-with-cakes.webp" alt="منيو الحلويات الكامل" width="2160" height="6540" loading="eager" decoding="async"></figure></div></section></main></body></html>
+<div class="menu-panel" id="breakfast-panel" hidden aria-label="منيو الإفطار"><figure><img src="assets/link-menu/breakfast-approved.webp" alt="منيو الإفطار: البروشكيتا والسندويشات الباردة والتوست" width="1500" height="3973" loading="eager" decoding="async"></figure></div><div class="menu-panel" id="mains-panel" hidden aria-label="منيو الأطباق الرئيسية"><figure><img src="assets/link-menu/mains-salads.jpeg?v=2" alt="السلطات" width="1165" height="1654" loading="eager" decoding="async"></figure><figure><img src="assets/link-menu/mains-courses.jpeg?v=2" alt="الأطباق الرئيسية" width="1165" height="1654" loading="eager" decoding="async"></figure><figure><img src="assets/link-menu/mains-pasta.jpeg?v=2" alt="الباستا" width="1165" height="1654" loading="eager" decoding="async"></figure></div><div class="menu-panel" id="regular-panel" hidden aria-label="صور المنيو"><figure><img src="assets/link-menu/menu-2.jpeg" alt="المنيو: المشروبات الساخنة" width="1131" height="1600" loading="eager" decoding="async"></figure><figure><img src="assets/link-menu/menu-3.jpeg" alt="المنيو: مشروبات الماتشا والشاي والكوكتيلات" width="1131" height="1600" loading="eager" decoding="async"></figure><figure><img src="assets/link-menu/menu-1.jpeg" alt="المنيو: الموهيتو والمشروبات الباردة" width="1131" height="1600" loading="eager" decoding="async"></figure></div><div class="menu-panel" id="dessert-panel" hidden aria-label="صورة منيو الحلويات"><figure><img src="assets/link-menu/dessert-with-cakes.webp" alt="منيو الحلويات الكامل" width="2160" height="6540" loading="eager" decoding="async"></figure></div></section>
+
+<!-- قسم تقييم تجربة دولتشي سكاي -->
+<section class="feedback-card" id="feedback" aria-labelledby="feedback-title">
+  <div class="feedback-header">
+    <div class="feedback-badge">DOLCE SKY</div>
+    <h2 id="feedback-title" class="feedback-title">قيّم تجربة دولتشي سكاي</h2>
+    <p class="feedback-desc">ملاحظاتكم تساهم في الحفاظ على مستوى الخدمة والجودة في Dolce Sky</p>
+  </div>
+
+  <!-- مؤشر وخط التقدم المتسلسل -->
+  <div class="survey-progress-wrapper" id="survey-progress-wrapper">
+    <div class="survey-progress-header">
+      <span class="survey-step-counter" id="survey-step-counter">السؤال 1 من 5</span>
+      <button type="button" class="survey-back-btn" id="survey-back-btn" aria-label="السؤال السابق">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        <span>السابق</span>
+      </button>
+    </div>
+    <div class="survey-progress-bar">
+      <div class="survey-progress-fill" id="survey-progress-fill" style="width: 0%;"></div>
+      <div class="survey-progress-dots" id="survey-progress-dots">
+        <span class="survey-dot active" data-step="1"></span>
+        <span class="survey-dot" data-step="2"></span>
+        <span class="survey-dot" data-step="3"></span>
+        <span class="survey-dot" data-step="4"></span>
+        <span class="survey-dot" data-step="5"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- حالة النجاح بعد الإرسال -->
+  <div class="feedback-success-card" id="feedback-success-state">
+    <div class="feedback-success-badge">تم الإرسال بنجاح</div>
+    <h3 class="feedback-success-title">شكراً لمشاركتك</h3>
+    <p class="feedback-success-desc">وصلت ملاحظاتك إلى إدارة Dolce Sky مباشرة، ونعمل دائماً على تطوير تجربتكم.</p>
+    <button type="button" class="secondary-btn" id="reset-feedback-btn">إرسال تقييم آخر</button>
+  </div>
+
+  <!-- نموذج التقييم المتسلسل -->
+  <form id="feedback-form" novalidate>
+    <div class="survey-steps-container">
+
+      <!-- السؤال 1: سرعة الخدمة (بدون أي اختيار مسبق) -->
+      <div class="survey-step active" id="survey-step-1" data-step="1">
+        <h3 class="survey-question">1. ما تقييمك لسرعة تقديم الخدمة؟</h3>
+        <div class="survey-options" role="radiogroup" aria-label="سرعة الخدمة">
+          <label class="survey-option">
+            <input type="radio" name="serviceSpeed" value="ممتاز">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">ممتاز</span>
+          </label>
+          <label class="survey-option">
+            <input type="radio" name="serviceSpeed" value="جيد">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">جيد</span>
+          </label>
+          <label class="survey-option">
+            <input type="radio" name="serviceSpeed" value="ضعيف">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">ضعيف</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- السؤال 2: جودة الأكل والمشروبات (بدون أي اختيار مسبق) -->
+      <div class="survey-step" id="survey-step-2" data-step="2" style="display: none;">
+        <h3 class="survey-question">2. كيف تقيّم جودة الأكل والمشروبات؟</h3>
+        <div class="survey-options" role="radiogroup" aria-label="جودة الأكل والمشروبات">
+          <label class="survey-option">
+            <input type="radio" name="foodQuality" value="ممتاز">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">ممتاز</span>
+          </label>
+          <label class="survey-option">
+            <input type="radio" name="foodQuality" value="جيد">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">جيد</span>
+          </label>
+          <label class="survey-option">
+            <input type="radio" name="foodQuality" value="ضعيف">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">ضعيف</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- السؤال 3: تعامل طاقم العمل (بدون أي اختيار مسبق) -->
+      <div class="survey-step" id="survey-step-3" data-step="3" style="display: none;">
+        <h3 class="survey-question">3. ما رأيك في تعامل طاقم الضيافة والاستقبال؟</h3>
+        <div class="survey-options" role="radiogroup" aria-label="تعامل طاقم العمل">
+          <label class="survey-option">
+            <input type="radio" name="staffService" value="ممتاز">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">ممتاز</span>
+          </label>
+          <label class="survey-option">
+            <input type="radio" name="staffService" value="جيد">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">جيد</span>
+          </label>
+          <label class="survey-option">
+            <input type="radio" name="staffService" value="ضعيف">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">ضعيف</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- السؤال 4: أجواء ونظافة المكان (بدون أي اختيار مسبق) -->
+      <div class="survey-step" id="survey-step-4" data-step="4" style="display: none;">
+        <h3 class="survey-question">4. كيف تقيّم نظافة وأجواء المكان العامة؟</h3>
+        <div class="survey-options" role="radiogroup" aria-label="أجواء ونظافة المكان">
+          <label class="survey-option">
+            <input type="radio" name="cleanliness" value="ممتاز">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">ممتاز</span>
+          </label>
+          <label class="survey-option">
+            <input type="radio" name="cleanliness" value="جيد">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">جيد</span>
+          </label>
+          <label class="survey-option">
+            <input type="radio" name="cleanliness" value="ضعيف">
+            <span class="custom-radio-svg" aria-hidden="true">
+              <svg class="radio-svg-unselected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#c4b5a2" stroke-width="2"/></svg>
+              <svg class="radio-svg-selected" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#5d4624" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="#5d4624"/></svg>
+            </span>
+            <span class="option-text">ضعيف</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- الخطوة 5: تفاصيل إضافية وملاحظات -->
+      <div class="survey-step" id="survey-step-5" data-step="5" style="display: none;">
+        <h3 class="survey-question">5. تفاصيل إضافية وملاحظاتك</h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="tableNumber">رقم الطاولة <span class="optional">(اختياري)</span></label>
+            <input type="text" id="tableNumber" name="tableNumber" class="form-input" placeholder="مثال: 4" maxlength="20">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="customerName">الاسم <span class="optional">(اختياري)</span></label>
+            <input type="text" id="customerName" name="name" class="form-input" placeholder="اسمك الكريم" maxlength="60">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="feedbackComment">الملاحظات والتعليقات</label>
+          <textarea id="feedbackComment" name="comment" class="form-textarea" placeholder="شاركنا ملاحظاتك أو أي اقتراح تود إيصاله للإدارة..." rows="3" maxlength="500"></textarea>
+          <div class="char-count"><span id="char-current">0</span> / 500</div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-feedback-btn">
+          <span class="btn-text">إرسال التقييم</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- صندوق التنبيهات والأخطاء -->
+    <div class="feedback-alert" id="feedback-alert" role="alert"></div>
+  </form>
+</section></main></body></html>
